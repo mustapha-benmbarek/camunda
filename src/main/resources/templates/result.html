@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Camunda Demo | Animal (Result)</title>
+</head>
+<body>
+<h1>Animal Images</h1>
+
+<p th:if="${error}" th:text="${error}"></p>
+
+<div th:if="${animals}">
+    <div th:each="a : ${animals}">
+        <p>Type: <span th:text="${a.type}"></span></p>
+        <img th:src="@{${a.imageUrl}}" alt="Animal Image" style="max-width: 300px;"/><br/><br/>
+    </div>
+</div>
+
+<form action="/web" method="get">
+    <button type="submit">Back</button>
+</form>
+</body>
+</html>

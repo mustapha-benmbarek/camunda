@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center; /* horizontal center */
+      align-items: center;     /* vertical center */
+    }
+  </style>
+</head>
+<body>
+  <img th:src="'data:' + ${mime} + ';base64,' + ${imageBase64}" alt="Animal Image" />
+</body>
+</html>

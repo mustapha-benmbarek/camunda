@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Camunda Demo | Animal</title>
+</head>
+<body>
+    <h1>Animal Picture Request</h1>
+    <form action="/web/form" method="post">
+        <label for="type">Animal Type:</label>
+        <select name="type" id="type" required>
+            <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
+        </select>
+        <br><br>
+        <label for="count">Number of Pictures:</label>
+        <input type="number" name="count" id="count" min="1" required />
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
