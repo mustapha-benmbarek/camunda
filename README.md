@@ -37,11 +37,12 @@ Ensure the following software packages are installed on your system. The java ap
 Use a REST client like **Curl**, **Postman** or **Insomnia** to test the following HTTP endpoints.
 Here are the 2 exposed methods in the application.
 
+
 **1. POST `/api/animals` : Fetches animal images and stores them in an in-memory H2 database.**
+
 **2. GET `/api/animals` : Fetches the latest item (animal image) uploaded in the database.**
 
 
-**! Important: Error handling is enbaled on type (except cat, dog, bear) and count (not null, min:1 and max:10)**
 
 ## Examples of requests
 
@@ -53,41 +54,37 @@ curl -X POST http://localhost:8080/api/animals \
 ```
 
 HTTP GET : http://localhost:8080/api/animals
-```json
-   {} // No need to enter a payload 
+```bash
+curl -X GET http://localhost:8080/api/animals \
+  -H "Content-Type: application/json" 
 ```
 
 <br/>
 
 ## Examples of requests (Error Handling) 
-Creates a new animal record in the system.
+Error handling is enabled on type (except cat, dog, bear) and count (not null, min:1 and max:10)
 
-
-HTTP POST : http://localhost:8080/api/animals
-```json
-{
-    "type": "fish",
-    "count": 3
-}
+```bash
+curl -X POST http://localhost:8080/api/animals \
+  -H "Content-Type: application/json" \
+  -d '{"type": "fish", "count": 3}'
 ```
 or
-```json
-{
-    "type": "xx",
-    "count": 100
-}
+```bash
+curl -X POST http://localhost:8080/api/animals \
+  -H "Content-Type: application/json" \
+  -d '{"type": "xxxx", "count": 100}'
 ```
 or
-
-```json
-{
-    "type": "",
-    "count": 2
-}
+```bash
+curl -X POST http://localhost:8080/api/animals \
+  -H "Content-Type: application/json" \
+  -d '{"type": "", "count": 0}'
 ```
 
 <br/>
-![screenshot-http-post](https://github.com/user-attachments/assets/4e5c6488-3a92-4a53-a0b0-91d28db03bae)
+
+![screenshot-http-post](https://github.com/user-attachments/assets/60446a71-5f57-419e-b138-5c2af60d89fc)
 
 
 <br/><br/>
